@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="shortcut icon" href="@{/images/favicon.png}" />
+<title>Welcome</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/vendors/feather/feather.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/vendors/ti-icons/css/themify-icons.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/vendors/css/vendor.bundle.base.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/vendors/select2/select2.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/vendors/select2-bootstrap-theme/select2-bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/vertical-layout-light/style.css}" />
+</head>
+<body>
+	<div class="container-scroller">
+		<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+			th:replace="/layout_views/_navbar.html :: navbar"></nav>
+		<div class="container-fluid page-body-wrapper">
+			<div class="theme-setting-wrapper"
+				th:replace="/layout_views/_settings-panel.html :: settings-panel"></div>
+			<nav class="sidebar sidebar-offcanvas" id="sidebar"
+				th:replace="/layout_views/_sidebar.html :: sidebar"></nav>
+			<div class="main-panel">
+				<div class="content-wrapper">
+					<div class="row">
+						<div th:if="${successMessage != null}"
+							class="alert alert-success col-12" th:text="${successMessage}"
+							role="alert"></div>
+						<div th:if="${warningMessage != null}"
+							class="alert alert-warning col-12" th:text="${warningMessage}"
+							role="alert"></div>
+						<div th:if="${dangerMessage != null}"
+							class="alert alert-danger col-12" th:text="${dangerMessage}"
+							role="alert"></div>
+						<div class="col-lg-12 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<h3 class="display-3">Show ticket:</h3>
+									<div class="page-content page-container" id="page-content">
+										<div class="padding">
+											<div class="m-0">
+												<div class="col-12">
+													<div class="card user-card-full">
+														<div class="row m-l-0 m-r-0">
+															<div class="col-sm-4 bg-c-lite-green user-profile">
+																<div class="card-block text-center text-white">
+																	<div class="m-b-25">
+																		<img
+																			src="https://www.pngmart.com/files/8/List-PNG-File.png"
+																			class="img-radius" width="100" height="100">
+																	</div>
+																	<h6 class="f-w-600"></h6>
+																	<i
+																		class=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
+																</div>
+															</div>
+															<div class="col-sm-8">
+																<div class="card-block">
+																	<h6 class="m-b-20 p-b-5 b-b-default f-w-600">Informations</h6>
+																	<div class="row">
+																		<div class="col-sm-6">
+																			<p class="m-b-10 f-w-600">description</p>
+																			<h6 class="text-muted f-w-400"
+																				th:text="${ticket.description}"></h6>
+																		</div>
+																		<div class="col-sm-6">
+																			<p class="m-b-10 f-w-600">environment</p>
+																			<h6 class="text-muted f-w-400"
+																				th:text="${ticket.environment}"></h6>
+																		</div>
+																	</div>
+																	<div class="row">
+																		<div class="col-sm-6">
+																			<p class="m-b-10 f-w-600">priority</p>
+																			<h6 class="text-muted f-w-400"
+																				th:text="${ticket.priority}"></h6>
+																		</div>
+																		<div class="col-sm-6">
+																			<p class="m-b-10 f-w-600">status</p>
+																			<h6 class="text-muted f-w-400"
+																				th:text="${ticket.status}"></h6>
+																		</div>
+																	</div>
+																	<ul class="social-link list-unstyled m-t-40 m-b-10">
+																		<li><a href="#!" data-toggle="tooltip"
+																			data-placement="bottom" title=""
+																			data-original-title="facebook" data-abc="true"><i
+																				class="mdi mdi-facebook feather icon-facebook facebook"
+																				aria-hidden="true"></i></a></li>
+																		<li><a href="#!" data-toggle="tooltip"
+																			data-placement="bottom" title=""
+																			data-original-title="twitter" data-abc="true"><i
+																				class="mdi mdi-twitter feather icon-twitter twitter"
+																				aria-hidden="true"></i></a></li>
+																		<li><a href="#!" data-toggle="tooltip"
+																			data-placement="bottom" title=""
+																			data-original-title="instagram" data-abc="true"><i
+																				class="mdi mdi-instagram feather icon-instagram instagram"
+																				aria-hidden="true"></i></a></li>
+																	</ul>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<nav class="footer"
+					th:replace="/layout_views/_footer.html :: footer"></nav>
+			</div>
+		</div>
+	</div>
+</body>
+<script th:src="@{/vendors/js/vendor.bundle.base.js}"></script>
+<script th:src="@{/vendors/chart.js/Chart.min.js}"></script>
+<script th:src="@{/js/off-canvas.js}"></script>
+<script th:src="@{/js/hoverable-collapse.js}"></script>
+<script th:src="@{/js/template.js}"></script>
+<script th:src="@{/js/settings.js}"></script>
+<script th:src="@{/js/todolist.js}"></script>
+<script th:src="@{/js/chart.js}"></script>
+</html>
