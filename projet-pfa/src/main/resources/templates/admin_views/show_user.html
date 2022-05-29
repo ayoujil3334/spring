@@ -1,0 +1,186 @@
+<!DOCTYPE HTML>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="shortcut icon" href="@{/images/favicon.png}" />
+<title>Welcome</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/vendors/feather/feather.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/vendors/ti-icons/css/themify-icons.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/vendors/css/vendor.bundle.base.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/vendors/select2/select2.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/vendors/select2-bootstrap-theme/select2-bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/vertical-layout-light/style.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/vendors/mdi/css/materialdesignicons.min.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/show_user_css.css}" />
+<script defer
+	src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+	integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.15.4/css/solid.css"
+	integrity="sha384-Tv5i09RULyHKMwX0E8wJUqSOaXlyu3SQxORObAI08iUwIalMmN5L6AvlPX2LMoSE"
+	crossorigin="anonymous" />
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.15.4/css/fontawesome.css"
+	integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7"
+	crossorigin="anonymous" />
+</head>
+<body>
+	<div class="container-scroller">
+		<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row"
+			th:replace="/layout_views/_navbar.html :: navbar"></nav>
+		<div class="container-fluid page-body-wrapper">
+			<div class="theme-setting-wrapper"
+				th:replace="/layout_views/_settings-panel.html :: settings-panel"></div>
+			<nav class="sidebar sidebar-offcanvas" id="sidebar"
+				th:replace="/layout_views/_sidebar.html :: sidebar"></nav>
+			<div class="main-panel">
+				<div class="content-wrapper">
+					<div class="row">
+						<div class="col-lg-12 grid-margin stretch-card">
+							<div class="card">
+								<div class="card-body">
+									<div class="container p-0">
+										<div class="main-body p-0">
+											<div class="row gutters-sm">
+												<div class="col-md-4 mb-3">
+													<div class="card">
+														<div class="card-body">
+															<div
+																class="d-flex flex-column align-items-center text-center">
+																<img
+																	th:src="@{'/images/users/' + ${userImage}}"
+																	alt="Admin" class="rounded-circle" width="150">
+																<div class="mt-3">
+																	<h4 th:text="'Nom: ' + ${user.nom} + ', Prenom: ' + ${user.prenom}"></h4>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-8">
+													<div class="card mb-3">
+														<div class="card-body">
+															<div class="row">
+																<div class="col-sm-3">
+																	<h6 class="mb-0">Email</h6>
+																</div>
+																<div th:text="${user.email}" class="col-sm-9 text-secondary"></div>
+															</div>
+															<hr>
+															<div class="row">
+																<div class="col-sm-3">
+																	<h6 class="mb-0">Tel</h6>
+																</div>
+																<div th:text="${user.tel}" class="col-sm-9 text-secondary"></div>
+															</div>
+															<hr>
+															<div class="row">
+																<div class="col-sm-3">
+																	<h6 class="mb-0">Carte d'identit&eacute; nationale
+																		(CIN)</h6>
+																</div>
+																<div th:text="${user.cin}" class="col-sm-9 text-secondary"></div>
+															</div>
+															<hr>
+															<div class="row">
+																<div class="col-sm-3">
+																	<h6 class="mb-0">Structure de recherche</h6>
+																</div>
+																<div th:text="${user.structureR}" class="col-sm-9 text-secondary"></div>
+															</div>
+															<hr>
+															<div class="row">
+																<div class="col-sm-3">
+																	<h6 class="mb-0">Professeur de l'ENSA?</h6>
+																</div>
+																<div th:if="${user.isEnsa == true}" class="col-sm-9 text-secondary">oui</div>
+																<div th:if="${user.isEnsa == false}" class="col-sm-9 text-secondary">non</div>
+															</div>
+															<hr>
+															<div class="row">
+																<div class="col-sm-3">
+																	<h6 class="mb-0">Directeur de recherche</h6>
+																</div>
+																<div th:text="${user.directeurR}" class="col-sm-9 text-secondary"></div>
+															</div>
+															<hr>
+															<div class="row">
+																<div class="col-sm-3">
+																	<h6 class="mb-0">Date de recrutement</h6>
+																</div>
+																<div th:text="${user.dateRec}" class="col-sm-9 text-secondary"></div>
+															</div>
+															<hr>
+															<div class="row">
+																<div class="col-sm-3">
+																	<h6 class="mb-0">Type</h6>
+																</div>
+																<div th:text="${user.type}" class="col-sm-9 text-secondary"></div>
+															</div>
+															<hr>
+															<div class="row">
+																<div class="col-sm-3">
+																	<h6 class="mb-0">N° DBRP</h6>
+																</div>
+																<div th:text="${user.dbrp}" class="col-sm-9 text-secondary"></div>
+															</div>
+															<hr>
+															<div class="row">
+																<div class="col-sm-3">
+																	<h6 class="mb-0">Sp&eacute;cialit&eacute;</h6>
+																</div>
+																<div th:text="${user.specialite.name}" class="col-sm-9 text-secondary"></div>
+															</div>
+															<hr>
+															<div class="row">
+																<div class="col-sm-12">
+																	<a class="btn btn-info m-1" target="__blank" href="">Modifier</a>
+																	<th:block th:each="typeDossier : ${typesDossiers}">
+																		<a class="btn btn-primary m-1 text-left"
+																			th:href="@{'/admin/profile/users/' + ${user.id} + '/dossiers/' + ${typeDossier.type}}"
+																			th:text="${'Dossier ' + typeDossier.type}"></a>
+																	</th:block>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<nav class="footer"
+					th:replace="/layout_views/_footer.html :: footer"></nav>
+			</div>
+		</div>
+	</div>
+</body>
+<script th:src="@{/vendors/js/vendor.bundle.base.js}"></script>
+<script th:src="@{/vendors/chart.js/Chart.min.js}"></script>
+<script th:src="@{/js/off-canvas.js}"></script>
+<script th:src="@{/js/hoverable-collapse.js}"></script>
+<script th:src="@{/js/template.js}"></script>
+<script th:src="@{/js/settings.js}"></script>
+<script th:src="@{/js/todolist.js}"></script>
+<script th:src="@{/js/chart.js}"></script>
+<script th:src="@{/js/file-upload.js}"></script>
+<script th:src="@{/js/select2.js}"></script>
+<script th:src="@{/js/typeahead.js}"></script>
+</html>

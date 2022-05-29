@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="shortcut icon" href="@{/images/favicon.png}" />
+<title>sign up</title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/vendors/feather/feather.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/vendors/ti-icons/css/themify-icons.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/vendors/css/vendor.bundle.base.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/css/vertical-layout-light/style.css}" />
+</head>
+<body>
+	<div class="container-scroller">
+		<div class="container-fluid page-body-wrapper full-page-wrapper">
+			<div class="content-wrapper d-flex align-items-center auth px-0">
+				<div class="row w-100 mx-0">
+					<div class="col-lg-4 mx-auto">
+						<div class="auth-form-light text-left py-5 px-4 px-sm-5">
+							<div class="brand-logo">
+								<img th:src="@{/images/home/logo.png}" alt="logo">
+							</div>
+							<h4>Inscription</h4>
+							<div th:if="${successMessage != null}"
+								class="alert alert-success col-12" th:text="${successMessage}"
+								role="alert"></div>
+							<div th:if="${warningMessage != null}"
+								class="alert alert-warning col-12" th:text="${warningMessage}"
+								role="alert"></div>
+							<div th:if="${dangerMessage != null}"
+								class="alert alert-danger col-12" th:text="${dangerMessage}"
+								role="alert"></div>
+							<form class="pt-3" th:action="@{/register}" method="post"
+								th:object="${user}">
+								<div class="form-group">
+								<label for="username">Nom d'utilisateur</label>
+									<input type="text" name="username"
+										class="form-control form-control-lg" id="username"
+										placeholder="username" th:field="*{username}">
+								</div>
+								<div class="form-group">
+								<label for="email">Email</label>
+									<input type="email" name="email"
+										class="form-control form-control-lg" id="email"
+										placeholder="email" th:field="*{email}">
+								</div>
+								<div class="form-group">
+								<label for="password">Mot de passe</label>
+									<input type="password" name="password"
+										class="form-control form-control-lg" id="password"
+										placeholder="password" th:field="*{password}">
+								</div>
+								<div class="form-group">
+								<label for="nom">Nom</label>
+									<input type="text" name="nom"
+										class="form-control form-control-lg" id="nom"
+										placeholder="nom" th:field="*{nom}">
+								</div>
+								<div class="form-group">
+								<label for="prenom">Prenom</label>
+									<input type="text" name="prenom"
+										class="form-control form-control-lg" id="prenom"
+										placeholder="prenom" th:field="*{prenom}">
+								</div>
+								<div class="form-group">
+								<label for="cin">CIN</label>
+									<input type="text" name="cin"
+										class="form-control form-control-lg" id="cin"
+										placeholder="cin" th:field="*{cin}">
+								</div>
+								<div class="form-group">
+								<label for="dbrp">N° DBRP</label>
+									<input type="text" name="dbrp"
+										class="form-control form-control-lg" id="dbrp"
+										placeholder="dbrp" th:field="*{dbrp}">
+								</div>
+								<div class="form-group">
+								<label for="dateRec">Date de recrutement</label>
+									<input type="date" name="dateRec"
+										class="form-control form-control-lg" id="dateRec"
+										placeholder="dateRec" th:field="*{dateRec}">
+								</div>
+								<div class="form-group">
+									<label for="specialite">Spécialité</label> <select
+										class="form-control" id="specialite" th:field="*{specialite}">
+										<th:block th:each="specialite: ${specialites}">
+											<option th:text="${specialite.name}"
+												th:value="${specialite.id}"></option>
+										</th:block>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="specialite">Type</label> <select
+										class="form-control" id="specialite" th:field="*{type}">
+										<option th:value="PES">Pes</option>
+										<option th:value="PESA">Pesa</option>
+										<option th:value="PH">Ph</option>
+									</select>
+								</div>
+								<div class="form-group">
+								<label for="structureR">Structure de recherche</label>
+									<input type="text" name="structureR"
+										class="form-control form-control-lg" id="structureR"
+										placeholder="structureR" th:field="*{structureR}">
+								</div>
+								<div class="form-group">
+								<label for="directeurR">Directeur de recherche</label>
+									<input type="text" name="directeurR"
+										class="form-control form-control-lg" id="directeurR"
+										placeholder="directeurR" th:field="*{directeurR}">
+								</div>
+								<div class="mt-3">
+									<input
+										class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
+										type="submit" value ="Inscrire" />
+								</div>
+								<div class="text-center mt-4 font-weight-light">
+									Vous avez déjà un compte? <a th:href="@{/login}"
+										class="text-primary">Connexion</a>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- content-wrapper ends -->
+		</div>
+	</div>
+</body>
+<script th:src="@{/vendors/js/vendor.bundle.base.js}"></script>
+<script th:src="@{/js/off-canvas.js}"></script>
+<script th:src="@{/js/hoverable-collapse.js}"></script>
+<script th:src="@{/js/template.js}"></script>
+<script th:src="@{/js/settings.js}"></script>
+<script th:src="@{/js/todolist.js}"></script>
+</html>

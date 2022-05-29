@@ -1,0 +1,90 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar"
+	th:fragment="sidebar">
+	<ul class="nav">
+		<th:block sec:authorize="hasAuthority('ADMIN')">
+			<li class="nav-item"><a class="nav-link" href="/admin/profile/dashboard">
+					<i style="font-size: 18px" class="mdi mdi-chart-areaspline mr-1"></i>
+					<span class="menu-title">Dashboard</span>
+			</a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="/admin/profile/specialites"> <i style="font-size: 18px"
+					class="mdi mdi-format-list-bulleted mr-1"></i> <span
+					class="menu-title">Sp&eacute;cialit&eacute;s</span>
+			</a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="/admin/profile/types-documents"> <i
+					style="font-size: 18px" class="mdi mdi-format-list-bulleted mr-1"></i>
+					<span class="menu-title">Types Documents</span>
+			</a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="/admin/profile/types-dossiers"> <i style="font-size: 18px"
+					class="mdi mdi-format-list-bulleted mr-1"></i> <span
+					class="menu-title">Types Dossiers</span>
+			</a></li>
+			<li class="nav-item"><a class="nav-link" data-toggle="collapse"
+				href="#ui-basic_0" aria-expanded="false" aria-controls="ui-basic">
+					<i style="font-size: 18px" class="mdi mdi-account-multiple mr-3"></i>
+					<span class="menu-title">Professeurs</span> <i class="menu-arrow"></i>
+			</a>
+				<div class="collapse" id="ui-basic_0">
+					<ul class="nav flex-column sub-menu">
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/admin/profile/professeurs/pesa}">Pesa</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/admin/profile/professeurs/pes}">Pes</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/admin/profile/professeurs/ph}">Ph</a></li>
+					</ul>
+				</div></li>
+			<li class="nav-item"><a class="nav-link" data-toggle="collapse"
+				href="#ui-basic_1" aria-expanded="false" aria-controls="ui-basic">
+					<i style="font-size: 18px"
+					class="mdi mdi-apple-keyboard-command mr-3"></i> <span
+					class="menu-title">Demandes</span> <i class="menu-arrow"></i>
+			</a>
+				<div class="collapse" id="ui-basic_1">
+					<ul class="nav flex-column sub-menu">
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/admin/profile/demandes/accepted}">Accept&eacute;es</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/admin/profile/demandes/pending}">En attentes</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/admin/profile/demandes/refused}">Refus&eacute;es</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/admin/profile/demandes/history}">Historique</a></li>
+					</ul>
+				</div></li>
+		</th:block>
+		<th:block sec:authorize="hasAuthority('PROFESSEUR')">
+			<li class="nav-item"><a class="nav-link" data-toggle="collapse"
+				href="#ui-basic_2" aria-expanded="false" aria-controls="ui-basic">
+					<i class="fas fa-users mr-3"></i> <span class="menu-title">Dossiers</span>
+					<i class="menu-arrow"></i>
+			</a>
+				<div class="collapse" id="ui-basic_2">
+					<ul class="nav flex-column sub-menu">
+						<li th:each="typeDossier : ${typesDossiers}" class="nav-item"><a
+							class="nav-link"
+							th:href="@{/professeur/profile/dossiers/{type}(type=${typeDossier.type})}"
+							th:text="${#strings.capitalize(typeDossier.type)}"></a></li>
+					</ul>
+				</div></li>
+			<li class="nav-item"><a class="nav-link" data-toggle="collapse"
+				href="#ui-basic_3" aria-expanded="false" aria-controls="ui-basic">
+					<i style="font-size: 18px"
+					class="mdi mdi-apple-keyboard-command mr-3"></i> <span
+					class="menu-title">Mes demandes</span> <i class="menu-arrow"></i>
+			</a>
+				<div class="collapse" id="ui-basic_3">
+					<ul class="nav flex-column sub-menu">
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/professeur/profile/demandes/pending}">En attentes</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/professeur/profile/demandes/accepted}">Accept&eacute;es</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/professeur/profile/demandes/refused}">Refus&eacute;es</a></li>
+					</ul>
+				</div></li>
+		</th:block>
+	</ul>
+</nav>

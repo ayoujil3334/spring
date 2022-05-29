@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   
+    <meta name="viewport" content="width=device-width , initial-scale=1">
+    <title>Acceuil</title>
+    <link rel="stylesheet" type="text/css"
+	th:href="@{/css/home_page_style.css}" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script&family|Poppins&display=swap" rel="stylesheet">
+   
+</head>
+<body>
+    <section id="banner" style="background-image: url('/images/background.jpg');">
+    <a href="/"><img th:src="@{/images/home/logo.png}" class="logo"></a>
+        <div class="banner-text">
+            <h1><span style="color: rgb(39, 55, 126);">PROF</span> SUP </h1>
+            <p>:)</p>
+       <div class="banner-btn">
+            <a sec:authorize="isAuthenticated() && hasAuthority('ADMIN')" style="color: #FFF" href="/admin/profile/demandes/pending"><span></span>Mon espace</a>
+            <a sec:authorize="isAuthenticated() && hasAuthority('PROFESSEUR')" style="color: #FFF" href="/professeur/profile/demandes/pending"><span></span>Mon espace</a>
+            <a sec:authorize="isAnonymous()" style="color: #FFF" href="/login"><span></span>Connexion</a>
+            <a sec:authorize="isAnonymous()" style="color: #FFF" href="/register"><span></span>Inscription</a>
+        </div> 
+    </div>
+    </section>
+</body>
+</html>
